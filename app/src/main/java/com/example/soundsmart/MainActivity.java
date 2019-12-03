@@ -5,6 +5,7 @@ import android.content.Context;
 import android.media.AudioManager;
 import android.os.Bundle;
 import android.widget.SeekBar;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -34,6 +35,8 @@ public class MainActivity extends AppCompatActivity {
                 if(curr < progress){
                     audioManager.setStreamVolume(AudioManager.STREAM_MUSIC,progress,0);
                 }
+                TextView minVolText = findViewById(R.id.minVolText);
+                minVolText.setText("Minimum Volume: "+progress+"/15");
             }
 
             @Override
@@ -64,6 +67,8 @@ public class MainActivity extends AppCompatActivity {
                     if(cur > progress) {
                         audioManager.setStreamVolume(AudioManager.STREAM_MUSIC, progress, 0);
                     }
+                    TextView maxVolText = findViewById(R.id.maxVolText);
+                    maxVolText.setText("Maximum Volume: "+progress+"/15");
                 }
 
                 @Override
@@ -76,6 +81,7 @@ public class MainActivity extends AppCompatActivity {
 
                 }
             });
+
         }catch(Exception e ){
             e.printStackTrace();
         }
