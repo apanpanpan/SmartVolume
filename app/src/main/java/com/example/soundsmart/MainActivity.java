@@ -38,14 +38,13 @@ public class MainActivity extends AppCompatActivity {
                 if(curr < progress){
                     audioManager.setStreamVolume(AudioManager.STREAM_MUSIC,progress,0);
                 }
-
                 //Make them equal to each other
                 if(volumeSeekBar1.getProgress() > volumeSeekBar.getProgress()){
                     volumeSeekBar1.setProgress(volumeSeekBar.getProgress());
                 }
 
                 TextView minText = findViewById(R.id.minVolumeText);
-                minText.setText("" + volumeSeekBar1.getProgress());
+                minText.setText("Minimum Volume: "+progress+"/15");
             }
 
             @Override
@@ -84,7 +83,7 @@ public class MainActivity extends AppCompatActivity {
                     }
 
                     TextView maxText = findViewById(R.id.maxVolumeText);
-                    maxText.setText("" + volumeSeekBar.getProgress());
+                    maxText.setText("Maximum Volume: "+progress+"/15");
                 }
 
                 @Override
@@ -97,6 +96,7 @@ public class MainActivity extends AppCompatActivity {
 
                 }
             });
+
         }catch(Exception e ){
             e.printStackTrace();
         }
