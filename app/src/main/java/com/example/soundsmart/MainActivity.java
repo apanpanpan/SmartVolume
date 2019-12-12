@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
         volumeSeekBar1.setProgress(audioManager.getStreamVolume(AudioManager.STREAM_MUSIC));
 
         TextView minText = findViewById(R.id.minVolumeText);
-        minText.setText("" + volumeSeekBar1.getProgress());
+        minText.setText("" + volumeSeekBar1.getProgress()+"/15");
 
 
         volumeSeekBar1.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
                 }
 
                 TextView minText = findViewById(R.id.minVolumeText);
-                minText.setText("Minimum Volume: "+progress+"/15");
+                minText.setText(""+progress+"/15");
             }
 
             @Override
@@ -70,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
             volumeSeekBar.setProgress(audioManager.getStreamVolume(AudioManager.STREAM_MUSIC));
 
             TextView maxText = findViewById(R.id.maxVolumeText);
-            maxText.setText("" + volumeSeekBar.getProgress());
+            maxText.setText("" + volumeSeekBar.getProgress()+"/15");
 
             volumeSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
                 @Override
@@ -85,7 +85,7 @@ public class MainActivity extends AppCompatActivity {
                     }
 
                     TextView maxText = findViewById(R.id.maxVolumeText);
-                    maxText.setText("Maximum Volume: "+progress+"/15");
+                    maxText.setText(""+progress+"/15");
                 }
 
                 @Override
