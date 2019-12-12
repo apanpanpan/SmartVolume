@@ -2,8 +2,10 @@ package com.example.soundsmart;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.media.AudioManager;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
@@ -101,6 +103,11 @@ public class MainActivity extends AppCompatActivity {
             e.printStackTrace();
         }
 
+    }
+
+    public void goToSettings(View view) {
+        Intent intent = new Intent(getApplicationContext(), SettingsActivity.class);
+        startActivity(intent);
     }
 
 
