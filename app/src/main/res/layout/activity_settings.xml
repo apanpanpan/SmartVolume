@@ -32,6 +32,50 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <SeekBar
+        android:id="@+id/sampleBar"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="120dp"
+        android:layout_marginBottom="100dp"
+        app:layout_constraintBottom_toTopOf="@+id/adjustBar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <SeekBar
+        android:id="@+id/adjustBar"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        android:layout_marginBottom="100dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/sampleBar"
+        app:layout_constraintVertical_bias="0.461" />
+
+
+
+    <TextView
+        android:id="@+id/timeAdjust"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:text="Amount of time to adjust volume:"
+        app:layout_constraintStart_toStartOf="@+id/adjustBar"
+        app:layout_constraintBottom_toTopOf="@+id/adjustBar" />
+
+    <TextView
+        android:id="@+id/timeSample"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:text="Amount of time to sample audio:"
+        app:layout_constraintBottom_toTopOf="@+id/sampleBar"
+        app:layout_constraintStart_toStartOf="@+id/sampleBar" />
+
     <View
         android:id="@+id/view2"
         android:layout_width="350dp"
