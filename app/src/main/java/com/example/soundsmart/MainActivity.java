@@ -2,8 +2,10 @@ package com.example.soundsmart;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.media.AudioManager;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
@@ -27,6 +29,9 @@ public class MainActivity extends AppCompatActivity {
         volumeSeekBar1.setMax(audioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC));
         volumeSeekBar1.setProgress(audioManager.getStreamVolume(AudioManager.STREAM_MUSIC));
 
+        TextView minText = findViewById(R.id.minVolumeText);
+        minText.setText("" + volumeSeekBar1.getProgress()+"/15");
+
 
         volumeSeekBar1.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
@@ -35,8 +40,13 @@ public class MainActivity extends AppCompatActivity {
                 if(curr < progress){
                     audioManager.setStreamVolume(AudioManager.STREAM_MUSIC,progress,0);
                 }
-                TextView minVolText = findViewById(R.id.minVolText);
-                minVolText.setText("Minimum Volume: "+progress+"/15");
+                //Make them equal to each other
+                if(volumeSeekBar1.getProgress() > volumeSeekBar.getProgress()){
+                    volumeSeekBar1.setProgress(volumeSeekBar.getProgress());
+                }
+
+                TextView minText = findViewById(R.id.minVolumeText);
+                minText.setText(""+progress+"/15");
             }
 
             @Override
@@ -59,6 +69,8 @@ public class MainActivity extends AppCompatActivity {
             volumeSeekBar.setMax(audioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC));
             volumeSeekBar.setProgress(audioManager.getStreamVolume(AudioManager.STREAM_MUSIC));
 
+            TextView maxText = findViewById(R.id.maxVolumeText);
+            maxText.setText("" + volumeSeekBar.getProgress()+"/15");
 
             volumeSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
                 @Override
@@ -67,8 +79,13 @@ public class MainActivity extends AppCompatActivity {
                     if(cur > progress) {
                         audioManager.setStreamVolume(AudioManager.STREAM_MUSIC, progress, 0);
                     }
-                    TextView maxVolText = findViewById(R.id.maxVolText);
-                    maxVolText.setText("Maximum Volume: "+progress+"/15");
+
+                    if(volumeSeekBar.getProgress() < volumeSeekBar1.getProgress()){
+                        volumeSeekBar.setProgress(volumeSeekBar1.getProgress());
+                    }
+
+                    TextView maxText = findViewById(R.id.maxVolumeText);
+                    maxText.setText(""+progress+"/15");
                 }
 
                 @Override
@@ -86,6 +103,11 @@ public class MainActivity extends AppCompatActivity {
             e.printStackTrace();
         }
 
+    }
+
+    public void goToSettings(View view) {
+        Intent intent = new Intent(getApplicationContext(), SettingsActivity.class);
+        startActivity(intent);
     }
 
 
